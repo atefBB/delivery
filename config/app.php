@@ -147,6 +147,7 @@ return [
         CodeDelivery\Providers\RepositoryServiceProvider::class,
 
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
+        Bestmomo\Scafold\ScafoldServiceProvider::class,
 
     ],
 
