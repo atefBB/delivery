@@ -15,7 +15,7 @@
                     <thead>
                         <th>#</th>
                         <th>Nome</th>
-                        <th>Categoria</th>
+                        <th>Categoria</th
                         <th>Preço</th>
                         <th colspan="2">Ação</th>
                     </thead>

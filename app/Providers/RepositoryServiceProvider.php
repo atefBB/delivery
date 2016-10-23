@@ -32,5 +32,15 @@ class RepositoryServiceProvider extends ServiceProvider
             'CodeDelivery\Repositories\ProductRepository',
             'CodeDelivery\Repositories\ProductRepositoryEloquent'
         );
+
+        $this->app->bind(
+            'CodeDelivery\Repositories\ClientRepository',
+            'CodeDelivery\Repositories\ClientRepositoryEloquent'
+        );
+
+        $this->app->bind(
+            'CodeDelivery\Repositories\UserRepository',
+            'CodeDelivery\Repositories\UserRepositoryEloquent'
+        );
     }
 }
