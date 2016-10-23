@@ -14,6 +14,7 @@ use CodeDelivery\Validators\ProductValidator;
  */
 class ProductRepositoryEloquent extends BaseRepository implements ProductRepository
 {
+
     /**
      * Specify Model class name
      *
@@ -24,7 +25,6 @@ class ProductRepositoryEloquent extends BaseRepository implements ProductReposit
         return Product::class;
     }
 
-    
 
     /**
      * Boot up the repository, pushing criteria
