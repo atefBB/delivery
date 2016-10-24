@@ -36,4 +36,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware'=>'auth.checkro
     Route::post('clients/update/{id}', ['as' => 'clients.update', 'uses' => 'ClientsController@update']);
     Route::post('clients/store', ['as' => 'clients.store', 'uses' => 'ClientsController@store']);
     Route::get('clients/destroy/{id}', ['as' => 'clients.destroy', 'uses' => 'ClientsController@destroy']);
+
+    Route::get('orders/', ['as' => 'orders.index', 'uses' => 'OrdersController@index']);
+    Route::get('orders/edit/{id}', ['as' => 'orders.edit', 'uses' => 'OrdersController@edit']);
+    Route::post('orders/update/{id}', ['as' => 'orders.update', 'uses' => 'OrdersController@update']);
+
 });

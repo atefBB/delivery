@@ -12,6 +12,8 @@
 */
 
 use CodeDelivery\Models\Client;
+use CodeDelivery\Models\Order;
+use CodeDelivery\Models\OrderItem;
 use CodeDelivery\Models\User;
 use CodeDelivery\Models\Category;
 use CodeDelivery\Models\Product;
@@ -50,5 +52,18 @@ $factory->define(Client::class, function (Faker\Generator $faker){
         'city' => $faker->city,
         'state'=> $faker->state,
         'zipcode' => $faker->postcode
+    ];
+});
+
+$factory->define(Order::class, function (Faker\Generator $faker) {
+    return [
+        'user_id' => rand(1, 10),
+        'total' => rand(50, 100),
+        'status' => 0
+    ];
+});
+
+$factory->define(OrderItem::class, function (Faker\Generator $faker) {
+    return [
     ];
 });
