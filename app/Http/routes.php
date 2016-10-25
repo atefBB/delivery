@@ -11,12 +11,11 @@
 |
 */
 
-
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware'=>'auth.checkrole'], function () {
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth.checkrole'], function () {
     Route::get('categories/', ['as' => 'categories.index', 'uses' => 'CategoriesController@index']);
     Route::get('categories/create', ['as' => 'categories.create', 'uses' => 'CategoriesController@create']);
     Route::get('categories/edit/{id}', ['as' => 'categories.edit', 'uses' => 'CategoriesController@edit']);
@@ -40,5 +39,22 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware'=>'auth.checkro
     Route::get('orders/', ['as' => 'orders.index', 'uses' => 'OrdersController@index']);
     Route::get('orders/edit/{id}', ['as' => 'orders.edit', 'uses' => 'OrdersController@edit']);
     Route::post('orders/update/{id}', ['as' => 'orders.update', 'uses' => 'OrdersController@update']);
+});
+
+Route::group(['middleware' => 'cors'], function(){
+
+    Route::post('oauth/access_token', function () {
+        return Response::json(Authorizer::issueAccessToken());
+    });
+
+    Route::group(['prefix' => 'api', 'as' => 'api.', 'middleware' => 'oauth'], function () {
+        Route::get('pedidos', function () {
+            return [
+                'id' => 1,
+                'client' => 'Luitame',
+                'total' => 10
+            ];
+        });
+    });
 
 });
