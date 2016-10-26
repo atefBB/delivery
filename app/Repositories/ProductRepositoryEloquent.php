@@ -15,6 +15,8 @@ use CodeDelivery\Validators\ProductValidator;
 class ProductRepositoryEloquent extends BaseRepository implements ProductRepository
 {
 
+    protected $skipPresenter = true;
+
     /**
      * Specify Model class name
      *
