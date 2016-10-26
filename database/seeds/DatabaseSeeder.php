@@ -21,8 +21,9 @@ class DatabaseSeeder extends Seeder
          $this->call(CupomSeeder::class);
 
         DB::table('oauth_clients')->insert([
-            'name' => 'app',
+            'id' => 'app',
             'secret' => 'secret',
+            'name' => 'Ionic',
             'created_at' => date('Y-m-d H:i:s', time()),
             'updated_at' => date('Y-m-d H:i:s', time())
         ]);
