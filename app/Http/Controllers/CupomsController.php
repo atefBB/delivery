@@ -4,7 +4,6 @@ namespace CodeDelivery\Http\Controllers;
 
 use CodeDelivery\Http\Requests\AdminCategoryRequest;
 use CodeDelivery\Http\Requests\AdminCupomRequest;
-use CodeDelivery\Repositories\CategoryRepository;
 use CodeDelivery\Repositories\CupomRepository;
 
 class CupomsController extends Controller

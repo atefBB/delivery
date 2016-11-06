@@ -34,6 +34,7 @@ class UserTableSeeder extends Seeder
         });
 
         factory(User::class, 10)->create([
+            'password' => bcrypt('secret'),
             'role' => 'deliveryman',
         ]);
     }

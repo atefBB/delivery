@@ -69,13 +69,8 @@ Route::group(['middleware' => 'cors'], function () {
         });
 
         Route::group(['prefix' => 'deliveryman', 'as' => 'deliveryman.', 'middleware' => 'oauth.checkrole:deliveryman'], function () {
-            Route::get('pedidos', function () {
-                return [
-                    'id' => 1,
-                    'client' => 'Luitame - Entregador',
-                    'total' => 10
-                ];
-            });
+            Route::resource('order', 'Api\Deliveryman\DeliverymanCheckoutController', ['except' => ['create', 'edit', 'destroy']]);
+            Route::patch('order/{id}/update-status/', ['as' => 'orders.update_status','uses' => 'Api\Deliveryman\DeliverymanCheckoutController@updateStatus']);
         });
 
     });
