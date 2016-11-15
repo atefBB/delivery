@@ -1,9 +1,10 @@
 <?php
 namespace CodeDelivery\Http\Controllers\Api;
 
+use CodeDelivery\Http\Controllers\Controller;
 use CodeDelivery\Repositories\CupomRepository;
 
-class CupomController
+class CupomController extends Controller
 {
 
     /**

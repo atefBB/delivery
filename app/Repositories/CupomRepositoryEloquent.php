@@ -45,7 +45,7 @@ class CupomRepositoryEloquent extends BaseRepository implements CupomRepository
     {
         $result = $this->model
                        ->where('code', $code)
-                       ->where('used', 0)
+                       ->where('userd', 0)
                        ->first();
 
         if($result){
