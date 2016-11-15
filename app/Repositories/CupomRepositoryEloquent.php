@@ -2,6 +2,7 @@
 
 namespace CodeDelivery\Repositories;
 
+use CodeDelivery\Presenters\CupomPresenter;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
@@ -25,7 +26,10 @@ class CupomRepositoryEloquent extends BaseRepository implements CupomRepository
         return Cupom::class;
     }
 
-
+    public function presenter()
+    {
+        return CupomPresenter::class;
+    }
 
     /**
      * Boot up the repository, pushing criteria
