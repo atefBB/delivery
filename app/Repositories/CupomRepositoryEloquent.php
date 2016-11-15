@@ -16,7 +16,7 @@ use Prettus\Repository\Eloquent\BaseRepository;
 class CupomRepositoryEloquent extends BaseRepository implements CupomRepository
 {
 
-    protected $skipPresenter = false;
+    protected $skipPresenter = true;
 
     /**
      * Specify Model class name
