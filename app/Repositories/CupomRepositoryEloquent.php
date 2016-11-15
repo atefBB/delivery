@@ -2,6 +2,7 @@
 
 namespace CodeDelivery\Repositories;
 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use CodeDelivery\Repositories\CupomRepository;
@@ -24,7 +25,7 @@ class CupomRepositoryEloquent extends BaseRepository implements CupomRepository
         return Cupom::class;
     }
 
-    
+
 
     /**
      * Boot up the repository, pushing criteria
@@ -44,5 +45,7 @@ class CupomRepositoryEloquent extends BaseRepository implements CupomRepository
         if($result){
             return $this->parserResult($result);
         }
+
+        throw (new ModelNotFoundException)->setModel(get_class($this->model));
     }
 }
