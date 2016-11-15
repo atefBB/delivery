@@ -2,13 +2,12 @@
 
 namespace CodeDelivery\Repositories;
 
-use CodeDelivery\Presenters\CupomPresenter;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Prettus\Repository\Eloquent\BaseRepository;
-use Prettus\Repository\Criteria\RequestCriteria;
-use CodeDelivery\Repositories\CupomRepository;
 use CodeDelivery\Models\Cupom;
+use CodeDelivery\Presenters\CupomPresenter;
 use CodeDelivery\Validators\CupomValidator;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Prettus\Repository\Criteria\RequestCriteria;
+use Prettus\Repository\Eloquent\BaseRepository;
 
 /**
  * Class CupomRepositoryEloquent
