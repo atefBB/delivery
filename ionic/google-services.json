@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "841918179354",
+    "firebase_url": "https://code-delivery-a475f.firebaseio.com",
+    "project_id": "code-delivery-a475f",
+    "storage_bucket": "code-delivery-a475f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:841918179354:android:c2b518d505799034",
+        "android_client_info": {
+          "package_name": "com.codedeliery.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "841918179354-o113mgikv4f4i542bs6fkim9mv85jvo1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmTkG0gu4n8BAgzgMqbCvL1sBV24_L2eo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
