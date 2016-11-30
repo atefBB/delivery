@@ -52,7 +52,7 @@ angular
                 };
 
                 $scope.readBarCode = function () {
-                    getValueCupom(9682);
+                    getValueCupom(3509);
                 };
 
                 $scope.removeCupom = function () {
