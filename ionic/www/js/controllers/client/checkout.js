@@ -8,7 +8,7 @@ angular
 
                 $scope.cupom = cart.cupom;
                 $scope.items = cart.items;
-                $scope.total = cart.total;
+                $scope.total = $cart.getTotalFinal();
 
                 $scope.removeItem = function (i) {
                     $cart.removeItem(i);
@@ -59,7 +59,7 @@ angular
 
                 function getValueCupom(code) {
                     $ionicLoading.show({
-                        template: 'Enviando pedido...'
+                        template: 'Carregando...'
                     });
 
                     Cupom.get(
