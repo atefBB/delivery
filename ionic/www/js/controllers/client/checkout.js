@@ -13,7 +13,7 @@ angular
                 $scope.removeItem = function (i) {
                     $cart.removeItem(i);
                     $scope.items.splice(i, 1);
-                    $scope.tatal = $cart.get().total;
+                    $scope.tatal = $cart.getTotalFinal();
                 };
 
                 $scope.openProductDetail = function (i) {
@@ -25,9 +25,9 @@ angular
                 };
 
                 $scope.save = function () {
-                    var items = angular.copy($scope.items);
+                    var o = {items: angular.copy($scope.items)};
 
-                    angular.forEach(items, function (item) {
+                    angular.forEach(o.items, function (item) {
                         item.product_id = item.id
                     });
 
@@ -35,7 +35,11 @@ angular
                         template: 'Enviando pedido...'
                     });
 
-                    Order.save({id: null}, {items: items}, function (data) {
+                    if ($scope.cupom.value) {
+                        o.cupom_code = $scope.cupom.code;
+                    }
+
+                    Order.save({id: null}, o, function (data) {
                         $ionicLoading.hide();
                         $state.go('client.checkout_successful');
                     }, function (errorResponse) {
