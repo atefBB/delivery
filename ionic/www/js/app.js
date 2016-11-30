@@ -13,7 +13,7 @@ angular.module('starter', [
     'ngResource'
 ])
     .constant('appConfig', {
-        baseUrl: 'http://codedelivery.app'
+        baseUrl: 'http://code-delivery.herokuapp.com'
     })
     .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
@@ -61,7 +61,7 @@ angular.module('starter', [
 
         $stateProvider
             .state('login', {
-                url: "/",
+                url: "/login",
                 templateUrl: "templates/login.html",
                 controller: 'LoginCtrl'
             })
@@ -88,6 +88,7 @@ angular.module('starter', [
                 controller: 'ClientCheckoutDetailCtrl'
             })
             .state('client.checkout_successful', {
+                cache: false,
                 url: "/checkout/successful",
                 templateUrl: "templates/client/checkout_successful.html",
                 controller: 'ClientCheckoutSuccessfulCtrl'
@@ -97,7 +98,7 @@ angular.module('starter', [
                 templateUrl: "templates/client/view_products.html",
                 controller: 'ClientViewCheckoutCtrl'
             });
-        $urlRouterProvider.otherwise('/');
+        $urlRouterProvider.otherwise('/login');
     }])
     .service('cart', function () {
         this.items = [];
