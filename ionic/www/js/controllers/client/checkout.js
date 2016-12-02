@@ -52,19 +52,20 @@ angular
                 };
 
                 $scope.readBarCode = function () {
-                    $cordovaBarcodeScanner
-                        .scan()
-                        .then(function (barcodeData) {
-                            // Success! Barcode data is here
-                            getValueCupom(barcodeData.text);
-                        }, function (error) {
-                            // An error occurred
-                            $ionicPopup.alert({
-                                title: 'Advertência',
-                                template: 'Não foi possível ler o código de barras - Tente novamente'
+                    document.addEventListener("deviceready", function () {
+                        $cordovaBarcodeScanner
+                            .scan()
+                            .then(function (barcodeData) {
+                                // Success! Barcode data is here
+                                getValueCupom(barcodeData.text);
+                            }, function (error) {
+                                // An error occurred
+                                $ionicPopup.alert({
+                                    title: 'Advertência',
+                                    template: 'Não foi possível ler o código de barras - Tente novamente'
+                                });
                             });
-                        });
-
+                    }, false);
                 };
 
                 $scope.removeCupom = function () {
