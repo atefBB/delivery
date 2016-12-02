@@ -43,63 +43,92 @@ angular.module('starter', [
             });
         });
     })
-    .config(['$stateProvider', '$urlRouterProvider', 'OAuthProvider', 'OAuthTokenProvider', 'appConfig', function ($stateProvider, $urlRouterProvider, OAuthProvider, OAuthTokenProvider, appConfig) {
+    .config(['$stateProvider', '$urlRouterProvider', 'OAuthProvider', 'OAuthTokenProvider', 'appConfig', '$provide',
+        function ($stateProvider, $urlRouterProvider, OAuthProvider, OAuthTokenProvider, appConfig, $provide) {
 
-        OAuthProvider.configure({
-            baseUrl: appConfig.baseUrl,
-            clientId: 'app',
-            clientSecret: 'secret',
-            grantPath: '/oauth/access_token'
-        });
-
-        OAuthTokenProvider.configure({
-            name: 'token',
-            options: {
-                secure: false
-            }
-        });
-
-        $stateProvider
-            .state('login', {
-                url: "/login",
-                templateUrl: "templates/login.html",
-                controller: 'LoginCtrl'
-            })
-            .state('home', {
-                url: "/home",
-                templateUrl: "templates/home.html",
-                controller: function () {
-                }
-            })
-            .state('client', {
-                abstract: true,
-                url: "/client",
-                template: "<ion-nav-view/>"
-            })
-            .state('client.checkout', {
-                cache: false,
-                url: "/checkout",
-                templateUrl: "templates/client/checkout.html",
-                controller: 'ClientCheckoutCtrl'
-            })
-            .state('client.checkout_item_detail', {
-                url: "/checkout/detail/:index",
-                templateUrl: "templates/client/checkout_item_detail.html",
-                controller: 'ClientCheckoutDetailCtrl'
-            })
-            .state('client.checkout_successful', {
-                cache: false,
-                url: "/checkout/successful",
-                templateUrl: "templates/client/checkout_successful.html",
-                controller: 'ClientCheckoutSuccessfulCtrl'
-            })
-            .state('client.view_products', {
-                url: "/view_products",
-                templateUrl: "templates/client/view_products.html",
-                controller: 'ClientViewCheckoutCtrl'
+            OAuthProvider.configure({
+                baseUrl: appConfig.baseUrl,
+                clientId: 'app',
+                clientSecret: 'secret',
+                grantPath: '/oauth/access_token'
             });
-        $urlRouterProvider.otherwise('/login');
-    }])
+
+            OAuthTokenProvider.configure({
+                name: 'token',
+                options: {
+                    secure: false
+                }
+            });
+
+            $stateProvider
+                .state('login', {
+                    url: "/login",
+                    templateUrl: "templates/login.html",
+                    controller: 'LoginCtrl'
+                })
+                .state('home', {
+                    url: "/home",
+                    templateUrl: "templates/home.html",
+                    controller: function () {
+                    }
+                })
+                .state('client', {
+                    abstract: true,
+                    url: "/client",
+                    template: "<ion-nav-view/>"
+                })
+                .state('client.checkout', {
+                    cache: false,
+                    url: "/checkout",
+                    templateUrl: "templates/client/checkout.html",
+                    controller: 'ClientCheckoutCtrl'
+                })
+                .state('client.checkout_item_detail', {
+                    url: "/checkout/detail/:index",
+                    templateUrl: "templates/client/checkout_item_detail.html",
+                    controller: 'ClientCheckoutDetailCtrl'
+                })
+                .state('client.checkout_successful', {
+                    cache: false,
+                    url: "/checkout/successful",
+                    templateUrl: "templates/client/checkout_successful.html",
+                    controller: 'ClientCheckoutSuccessfulCtrl'
+                })
+                .state('client.view_products', {
+                    url: "/view_products",
+                    templateUrl: "templates/client/view_products.html",
+                    controller: 'ClientViewCheckoutCtrl'
+                });
+            $urlRouterProvider.otherwise('/login');
+
+            $provide.decorator('OAuthToken', ['$localStorage', '$delegate', function ($localStorage, $delegate) {
+                Object.defineProperties($delegate, {
+                    setToken: {
+                        value: function (data) {
+                            return $localStorage.setObject('token', data);
+                        },
+                        enumerable: true,
+                        configurable: true,
+                        writable: true
+                    }, getToken: {
+                        value: function () {
+                            return $localStorage.getObject('token');
+                        },
+                        enumerable: true,
+                        configurable: true,
+                        writable: true
+                    }, removeToken: {
+                        value: function () {
+                            return $localStorage.setObject('token', null);
+                        },
+                        enumerable: true,
+                        configurable: true,
+                        writable: true
+                    }
+                });
+                return $delegate;
+            }]);
+        }])
     .service('cart', function () {
         this.items = [];
     });
