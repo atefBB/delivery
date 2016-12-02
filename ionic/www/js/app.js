@@ -1,5 +1,5 @@
 // Ionic Starter App
-angular.module('starter.controllers', []);
+angular.module('starter.controllers', ['ngCordova']);
 angular.module('starter.services', []);
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
@@ -10,7 +10,8 @@ angular.module('starter', [
     'starter.controllers',
     'starter.services',
     'angular-oauth2',
-    'ngResource'
+    'ngResource',
+    'ngCordova'
 ])
     .constant('appConfig', {
         baseUrl: 'http://code-delivery.herokuapp.com'
