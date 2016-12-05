@@ -4,15 +4,6 @@ angular
         ['$scope', '$state', '$cart', 'Order', '$ionicLoading', '$ionicPopup', 'Cupom', '$cordovaBarcodeScanner', 'User',
             function ($scope, $state, $cart, Order, $ionicLoading, $ionicPopup, Cupom, $cordovaBarcodeScanner, User) {
 
-                User.authenticated(
-                    {include: 'client'},
-                    function (data) {
-                        console.log(data.data);
-                    }, function (errorResponse) {
-
-                    }
-                );
-
                 var cart = $cart.get();
 
                 $scope.cupom = cart.cupom;

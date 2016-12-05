@@ -15,7 +15,7 @@ angular
                 User.authenticated(
                     {},
                     function (data) {
-                        $scoper.user = data.data;
+                        $scope.user = data.data;
                         $ionicLoading.hide();
                     }, function (errorResponse) {
                         $ionicLoading.hide();
