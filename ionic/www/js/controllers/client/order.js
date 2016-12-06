@@ -11,7 +11,11 @@ angular
                 });
 
                 Order.query(
-                    {id: null},
+                    {
+                        id: null,
+                        orderBy: 'created_at',
+                        sortedBy: 'desc'
+                    },
                     function (data) {
                         $scope.items = data.data;
                         $ionicLoading.hide();
