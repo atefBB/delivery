@@ -1,6 +1,7 @@
 // Ionic Starter App
 angular.module('starter.controllers', ['ngCordova']);
 angular.module('starter.services', []);
+angular.module('starter.filters', []);
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
@@ -9,6 +10,7 @@ angular.module('starter', [
     'ionic', 'ionic.service.core',
     'starter.controllers',
     'starter.services',
+    'starter.filters',
     'angular-oauth2',
     'ngResource',
     'ngCordova'

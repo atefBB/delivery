@@ -5,8 +5,8 @@
             <ion-item ng-repeat="o in items">
                 <div class="row">
                     <div class="col">
-                        <h2>{{o.created_at.date|limitTo: 10|date: 'dd/MM/yyyy'}}</h2>
-                        <p>{{o.product_names|limitTo: 2}}</p>
+                        <h2>{{o.created_at.date | limitTo: 10 | date: 'dd/MM/yyyy'}}</h2>
+                        <p>{{o.product_names | limitTo: 2 | join: ', '}}</p>
                         <i class="ion ion-ios-cart">{{o.product_names.length}} itens</i>
                     </div>
                     <div class="col text-right">
