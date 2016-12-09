@@ -16,7 +16,7 @@ angular.module('starter', [
     'ngCordova'
 ])
     .constant('appConfig', {
-        baseUrl: 'http://code-delivery.herokuapp.com'
+        baseUrl: 'http://codedelivery.app'
     })
     .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
