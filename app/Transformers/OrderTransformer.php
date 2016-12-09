@@ -13,7 +13,7 @@ use CodeDelivery\Models\Order;
  */
 class OrderTransformer extends TransformerAbstract
 {
-    protected $availableIncludes = ['cupom', 'items', 'client'];
+    protected $availableIncludes = ['cupom', 'items', 'client', 'deliveryman'];
 
     /**
      * Transform the \Order entity
@@ -26,11 +26,9 @@ class OrderTransformer extends TransformerAbstract
         return [
             'id' => (int)$model->id,
             'total' => (float)$model->total,
+            'status' => (int)$model->status,
             'product_names' => $this->getArrayProductNames($model->items),
-            'qtd' => (int)$model->qtd,
-            'price' => (float)$model->price,
-            'created_at' => $model->created_at,
-            'updated_at' => $model->updated_at
+            'created_at' => $model->created_at
         ];
     }
 
@@ -60,5 +58,14 @@ class OrderTransformer extends TransformerAbstract
     public function includeItems(Order $order)
     {
         return $this->collection($order->items, new OrderItemTransformer());
+    }
+
+    public function includeDeliveryman(Order $order)
+    {
+        if (!$order->deliveryman) {
+            return null;
+        }
+
+        return $this->item($order->deliveryman, new DeliverymanTransformer());
     }
 }
