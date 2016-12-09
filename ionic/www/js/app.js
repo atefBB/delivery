@@ -77,6 +77,7 @@ angular.module('starter', [
                 })
                 .state('client', {
                     abstract: true,
+                    cache: false,
                     url: "/client",
                     templateUrl: "templates/client/menu.html",
                     controller: 'ClientMenuCtrl'
