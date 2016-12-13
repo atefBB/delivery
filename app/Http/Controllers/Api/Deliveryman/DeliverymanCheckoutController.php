@@ -3,6 +3,7 @@
 namespace CodeDelivery\Http\Controllers\Api\Deliveryman;
 
 use CodeDelivery\Http\Controllers\Controller;
+use CodeDelivery\Models\Geo;
 use CodeDelivery\Repositories\OrderRepository;
 use CodeDelivery\Repositories\UserRepository;
 use CodeDelivery\Services\OrderService;
@@ -46,12 +47,12 @@ class DeliveryManCheckoutController extends Controller
     {
         $id = Authorizer::getResourceOwnerId();
         $orders = $this->orderRepository
-                       ->skipPresenter(false)
-                       ->with($this->with)
-                       ->scopeQuery(function ($query) use ($id) {
-                           return $query->where('user_deliveryman_id', '=', $id);
-                       })
-                       ->paginate();
+            ->skipPresenter(false)
+            ->with($this->with)
+            ->scopeQuery(function ($query) use ($id) {
+                return $query->where('user_deliveryman_id', '=', $id);
+            })
+            ->paginate();
 
         return $orders;
     }
@@ -60,8 +61,8 @@ class DeliveryManCheckoutController extends Controller
     {
         $idDeliveryman = Authorizer::getResourceOwnerId();
         return $this->orderRepository
-                    ->skipPresenter(false)
-                    ->getByIdAndDeliveryman($id, $idDeliveryman);
+            ->skipPresenter(false)
+            ->getByIdAndDeliveryman($id, $idDeliveryman);
     }
 
     public function updateStatus(Request $request, $id)
@@ -74,5 +75,14 @@ class DeliveryManCheckoutController extends Controller
         }
 
         return abort(400, 'Order não encontrada');
+    }
+
+    public function geo(Request $request, Geo $geo, $id)
+    {
+        $idDeliveryman = Authorizer::getResourceOwnerId();
+        $order = $this->orderRepository->getByIdAndDeliveryman($id, $idDeliveryman);
+        $geo->lat = $request->get('lat');
+        $geo->long = $request->get('long');
+        return $geo;
     }
 }
