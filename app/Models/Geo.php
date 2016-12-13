@@ -7,8 +7,8 @@ use Illuminate\Contracts\Support\Jsonable;
 class Geo implements Jsonable
 {
 
-    public $latitude;
-    public $longitude;
+    public $lat;
+    public $long;
 
     /**
      * Convert the object to its JSON representation.
@@ -19,8 +19,8 @@ class Geo implements Jsonable
     public function toJson($options = 0)
     {
         json_encode([
-            'lat' => $this->latitude,
-            'long' => $this->longitude
+            'lat' => $this->lat,
+            'long' => $this->long
         ]);
     }
 }
