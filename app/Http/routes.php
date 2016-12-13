@@ -69,8 +69,18 @@ Route::group(['middleware' => 'cors'], function () {
         });
 
         Route::group(['prefix' => 'deliveryman', 'as' => 'deliveryman.', 'middleware' => 'oauth.checkrole:deliveryman'], function () {
-            Route::resource('order', 'Api\Deliveryman\DeliverymanCheckoutController', ['except' => ['create', 'edit', 'destroy']]);
-            Route::patch('order/{id}/update-status/', ['as' => 'orders.update_status','uses' => 'Api\Deliveryman\DeliverymanCheckoutController@updateStatus']);
+            Route::resource('order',
+                'Api\Deliveryman\DeliverymanCheckoutController', [
+                    'except' => ['create', 'edit', 'destroy']
+                ]);
+            Route::patch('order/{id}/update-status/', [
+                'uses' => 'Api\Deliveryman\DeliverymanCheckoutController@updateStatus',
+                'as' => 'orders.update_status'
+            ]);
+            Route::post('order/{id}/geo', [
+                'uses' => 'Api\Deliveryman\DeliverymanCheckoutController@geo',
+                'as' => 'orders.geo'
+            ]);
         });
 
         Route::get('authenticated', 'Api\UserController@authenticated');
