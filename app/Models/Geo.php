@@ -18,7 +18,7 @@ class Geo implements Jsonable
      */
     public function toJson($options = 0)
     {
-        json_encode([
+        return json_encode([
             'lat' => $this->lat,
             'long' => $this->long
         ]);
