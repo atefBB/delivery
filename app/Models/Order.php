@@ -15,7 +15,8 @@ class Order extends Model implements Transformable
         'user_deliveryman_id',
         'total',
         'status',
-        'cupom_id'
+        'cupom_id',
+        'hash'
     ];
 
     public function client()
