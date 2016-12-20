@@ -3,6 +3,7 @@
 namespace CodeDelivery\Events;
 
 use CodeDelivery\Models\Geo;
+use CodeDelivery\Models\Order;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Queue\SerializesModels;
 
